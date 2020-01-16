@@ -12,6 +12,9 @@ alias gs="git status"
 # alias togit=gitrepos
 # alias gogit=gitrepos
 
+
+alias rad="git remote add origin "
+
 #                                                                                                        ! [commit]
 function commit() {
     if [[ -z ${1+x} ]]; then
