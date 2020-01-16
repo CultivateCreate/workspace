@@ -117,7 +117,7 @@ function echo_pub() {
     cat ~/.ssh/id_rsa.pub
 }
 
-function copy_ssh_from() {
+function copyssh() {
     if [[ (-z ${1+x}) ]]; then
         echo " "
         echo "**Warning**"
