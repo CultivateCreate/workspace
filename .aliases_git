@@ -1,0 +1,69 @@
+# Aliases created for command prompt repository commaands - git
+## Author: John Langdon
+
+####   -- Git Simplification
+
+alias add="git add ."
+alias push="git push"
+alias log="git log" --oneline
+alias gs="git status"
+
+# alias gitrepos="cd $HOME/_langdon/CultivateCreate/Repositories/ && ls -achs"
+# alias togit=gitrepos
+# alias gogit=gitrepos
+
+#                                                                                                        ! [commit]
+function commit() {
+    if [[ -z ${1+x} ]]; then
+        echo "cd must have a commit message && that message must be in quotes"
+        echo "Pattern:    commit -m ''message'' "
+        echo ""
+    else
+        echo "Committing changes... "
+        echo " " &&
+
+            git commit -m $1
+    fi
+}
+
+#                                                                                                        ! [add commit]
+function ac() {
+    if [[ -z ${1+x} ]]; then
+        echo "cd must have a commit message && that message must be in quotes"
+        echo "Pattern:    ac -m ''message'' "
+        echo ""
+    else
+        echo "Committing changes... "
+        echo " " &&
+            git add -A &&
+            git commit -m $1
+    fi
+}
+
+#                                                                                                        ! [add commit push]
+function acp() {
+    if [[ -z ${1+x} ]]; then
+        echo "function 'acp' requires a commit message in quotes"
+        echo "Pattern:    acp ''message'' "
+        echo ""
+    else
+        echo "Committing changes... "
+        echo " " &&
+            git add -A &&
+            git commit -m $1 &&
+            git push
+    fi
+}
+
+#                                                                                                        ! [kill branch]
+function killbranch() {
+
+echo "Removing branch local:"
+
+#                           ! delete branch locally
+    git branch -d localBranchName
+
+echo "Removing branch remote:"
+#                           ! delete branch remotely
+    git push origin --delete remoteBranchName
+}

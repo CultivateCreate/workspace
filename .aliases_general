@@ -1,0 +1,193 @@
+# Aliases created for command prompt general commands - navigation/commands
+## Author: John Langdon
+### Author: John Langdon
+
+# alias brc="source $HOME/_langdon/bash/.aliases_general && source $HOME/_langdon/bash/.aliases_git && source $HOME/.bashrc && source $HOME/.zshrc"
+# alias rc="source $HOME/_langdon/bash/
+
+# alias bashrc="&& echo \"   ~/.bashrc refreshed \""
+
+alias vscodesettings="open ~/Library/Application Support/Code/User/settings.json"
+
+alias findershowhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
+
+alias go="chdir"
+alias gor="chdir /"
+alias goru="chdir ~"
+alias to=go
+alias tor=gor
+alias toru=goru
+
+alias forcekill="sudo rm -rf"
+alias killfasho=forcekill
+alias 86=forcekill
+
+alias dev="foundation watch"
+
+alias _langdon="cd $HOME/_langdon/ && ls -achs"
+
+alias editbash="open $HOME/_langdon/bash/.aliases_general && open $HOME/_langdon/bash/.aliases_git && open $HOME/.zshrc"
+alias eb=editbash
+alias ebash=editbash
+
+alias todocs="$HOME/Documents/Langdon"
+alias godocs=todocs
+alias cddocs=godocs
+
+alias localsandbox="cd $HOME/Documents/Langdon && ls -achs"
+alias lsandbox=localsandbox
+alias lsb=lsandbox
+
+alias o="open"
+
+alias c="clear"
+alias @="pwd"
+
+alias l="ls -ah"
+alias ls="ls -ah"
+alias ll="ls -ah"
+
+alias prev="cd - && ls -achs"
+alias back="cd - && ls -achs"
+
+alias up="cd ../ && ls -achs"
+alias up1="cd ../ && ls -achs"
+alias up2="cd ../../ && ls -achs"
+alias up3="cd ../../../ && ls -achs"
+alias up4="cd ../../../../ && ls -achs"
+alias up5="cd ../../../../../ && ls -achs"
+
+#
+#
+## if X exists (folder) do nothing - otherwise, search for Y:
+##
+#           -= find all directories + 1 dir
+#                find . -type d -path '*/node_modules/*' -prune -print
+#
+
+# change user name :
+alias ownthisdir="sudo chown -Rv ujxl846 ."
+
+#[[ ! -z "$var" ]]
+function linknode() {
+    if [[ -z ${1+x} ]]; then
+        echo "linknode requires a specified version of node."
+        echo "use 'brew search node' to view list of available versions to link"
+
+    else
+        brew link --force --overwrite node@$1
+    fi
+}
+
+#[[ ! -z "$var" ]]
+function unlinknode() {
+    if [[ -z ${1+x} ]]; then
+        echo "unnode requires a specified version of node."
+        echo "use 'node -v' to get the version of node that is currently linked"
+    else
+        brew unlink node@$1
+    fi
+}
+
+function cdd() {
+    if [[ -z ${1+x} ]]; then
+        echo "cd must have a directory path"
+        echo "Pattern:    cd [arg1:dirpath]"
+        echo "    Example:    cd ~/Users/Documents/Super-Cool-App/readme.md"
+        echo ""
+    else
+        echo "From: "
+        echo " " &&
+            pwd &&
+            cd $1
+        echo " "
+        echo "To: "
+        echo " " &&
+            pwd &&
+            ls -achs
+
+        if [[ -z ${2+x} && $2 == "t" ]]; then
+        fi
+
+    fi
+
+}
+
+function echo_pub() {
+    cat ~/.ssh/id_rsa.pub
+}
+
+function copy_ssh_from() {
+    if [[ (-z ${1+x}) ]]; then
+        echo " "
+        echo "**Warning**"
+        echo "Improper use of the 'copy_ssh_from' function"
+        echo " "
+        echo "Please provide a complete path to ssh file ie ~/"
+        echo "  "
+    else
+        pbcopy <$1
+    fi
+}
+
+function new_ssh() {
+    if [[ (-z ${1+x}) ]]; then
+        echo " "
+        echo "**Warning**"
+        echo "Improper use of the 'new_ssh' function"
+        echo " "
+        echo "Pattern:    n(arg1:Email Address || User Name)"
+        echo "  "
+    else
+        ssh-keygen -t rsa -b 4096 -C "#$1"
+        echo "Setting up SSH Key for: $1"
+    fi
+}
+
+function new() {
+    if [[ (-z ${2+x}) || (-z ${1+x}) ]]; then
+        echo " "
+        echo "**Error**"
+        echo "Improper use of the 'new' function"
+        echo " "
+        echo "Pattern:    n(arg1:String, arg2:String)"
+        echo "  "
+    else
+        if [[ ($1 == "-d") || ($1 == "-D") ]]; then
+            mkdir $2
+            echo "New folder created: $2"
+            echo ""
+            echo ""
+        elif [[ ($1 == "-f") || ($1 == "-F") ]]; then
+            touch $2
+            echo "New file created: $2"
+            echo ""
+            echo ""
+        fi
+    fi
+    #    [[ $1 == "-d" ]] && echo "Folder" || [[ $1 == "-f" ]] && echo "File" ||  echo "Unknown Type Parameter"
+
+}
+
+function fallDIR() {
+    if [[ (-z ${1+x}) ]]; then
+        echo " "
+        echo "**Error**"
+        echo "need to pass a folder name in double quotes! (just the folder's name!)"
+        echo "example: fn ''folder_name''  "
+        echo " "
+    else
+        find . -type d -path '*/$1/*' -prune -print
+    fi
+    #    [[ $1 == "-d" ]] && echo "Folder" || [[ $1 == "-f" ]] && echo "File" ||  echo "Unknown Type Parameter"
+}
+
+# alias composer="php composer.phar"
+
+# for key in ${!arr_text_colors[@]}; do
+#     echo ${key} ${arr_text_colors[${key}]}
+# done
+
+# for key in ${!arr_text_colors[@]}; do
+#     echo ${key}
+# done
