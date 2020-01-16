@@ -32,8 +32,8 @@ SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=false
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source $HOME/_langdon/bash/.aliases_general
-source $HOME/_langdon/bash/.aliases_git
+source ./.aliases_general
+source ./.aliases_git
 # source $HOME/_langdon/bash/.colorizecho
 
 alias bashrc="source $BASH_ROOT/.zshrc"
