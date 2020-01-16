@@ -23,10 +23,8 @@ alias killfasho=forcekill
 alias 86=forcekill
 
 alias dev="foundation watch"
-
 alias _langdon="cd $HOME/_langdon/ && ls -achs"
-
-alias editbash="open $HOME/_langdon/bash/.aliases_general && open $HOME/_langdon/bash/.aliases_git && open $HOME/.zshrc"
+alias editbash="open $HOME/_langdon/bash/.aliases_general && open $HOME/_langdon/bash/.bashrc && open $HOME/_langdon/bash/.aliases_git && open $HOME/.zshrc"
 alias eb=editbash
 alias ebash=editbash
 
